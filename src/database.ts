@@ -1,6 +1,6 @@
-import { TUser, TProduct, TPurchase } from "./types";
+import { TUser, TProduct, TPurchase, SHOP } from "./types";
 
-export const users: TUser[] = [
+export let users: TUser[] = [
   {
     id: "Michelle",
     email: "michelle@michelle.com",
@@ -11,67 +11,23 @@ export const users: TUser[] = [
     email: "bruno@bruno.com",
     password: 541236,
   },
-  {
-    id: "Camila",
-    email: "camila@camila.com",
-    password: 584714,
-  },
-  {
-    id: "Artur",
-    email: "artur@artur.com",
-    password: 85968,
-  },
-  {
-    id: "Hanna",
-    email: "hanna@hanna.com",
-    password: 123456,
-  },
-  {
-    id: "Nathalia",
-    email: "nathalia@nathalia.com",
-    password: 654123,
-  },
 ];
 
-export const products: TProduct[] = [
+export let products: TProduct[] = [
   {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
+    id: 10,
+    name: "Calça-Jeans",
+    price: 50,
+    category: SHOP.CLOTHES,
   },
   {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
-  },
-  {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
-  },
-  {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
-  },
-  {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
-  },
-  {
-    id: "Arroz",
-    name: "michelle@michelle.com",
-    price: 20,
-    category: "comida",
+    id: 5,
+    name: "Scarpin",
+    price: 150,
+    category: SHOP.SHOES,
   },
 ];
-export const purchase: TPurchase[] = [
+export let purchase: TPurchase[] = [
   {
     userId: users[0].id,
     productId: products[0].id,
@@ -85,3 +41,89 @@ export const purchase: TPurchase[] = [
     totalPrice: 20,
   },
 ];
+//Users*************
+export function createUser(
+  id: string,
+  email: string,
+  password: number
+): TUser[] {
+  const newUser = {
+    id,
+    email,
+    password,
+  };
+  // return users.push(newUser)
+  return (users = [...users, newUser]);
+}
+
+export function getAllUsers() {
+  return console.log(users);
+}
+
+getAllUsers();
+
+// Product************
+
+export function createProduct(
+  id: number,
+  name: string,
+  price: number,
+  category: SHOP
+): TProduct[] {
+  const newProduct = {
+    id,
+    name,
+    price,
+    category,
+  };
+
+  return (products = [...products, newProduct]);
+}
+
+export function getAllProducts() {
+  return console.log(products);
+}
+
+getAllProducts();
+
+export function getProductById(idToSearce: number) {
+  products.map((products) => {
+    if (products.id === idToSearce) {
+      return console.log(products);
+    } else {
+      return console.log(undefined);
+    }
+  });
+}
+
+export function queryProductsByName(q: string) {
+  products.map((products) => {
+    if (products.name.toLowerCase().includes(q.toLowerCase())) {
+      return console.log(products);
+    } else {
+      return console.log(undefined);
+    }
+  });
+}
+
+//Purchase******
+
+export function createPurchase(
+  userId: string,
+  productId: number,
+  quantity: number,
+  totalPrice: number
+): TPurchase[] {
+  const newPurchase = { userId, productId, quantity, totalPrice };
+
+  return (purchase = [...purchase, newPurchase]);
+}
+export function getAllPurchasesFromUserId(userIdToSearch: string) {
+  purchase.map((purchase) => {
+    if (purchase.userId === userIdToSearch) {
+      return console.log(purchase);
+    } else {
+      return console.log(undefined);
+    }
+  });
+}
