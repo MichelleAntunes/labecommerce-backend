@@ -1,0 +1,24 @@
+{
+  "name": "labecommerce-backend",
+  "version": "1.0.0",
+  "description": "O objetivo dos exercícios é desenvolver o próprio projeto Labecommerce - Backend conforme o avanço das aulas. A cada atividade da tarde iremos implementar ou refatorar partes do projeto, além de praticar lógicas por fora (como o de hoje).",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "game1": "node ./game1.js",
+    "game2": " node ./game2.js",
+    "game3": " node ./game3.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichelleAntunes/labecommerce-backend.git"
+  },
+  "author": "Michelle Antunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichelleAntunes/labecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/MichelleAntunes/labecommerce-backend#readme"
+}
