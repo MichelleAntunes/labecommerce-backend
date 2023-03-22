@@ -5,15 +5,21 @@ export type TUser = {
 };
 
 export type TProduct = {
-  id: string;
+  id: number;
   name: string;
   price: number;
-  category: string;
+  category: SHOP;
 };
 
 export type TPurchase = {
   userId: string;
-  productId: string;
+  productId: number;
   quantity: number;
   totalPrice: number;
 };
+
+export enum SHOP {
+  CLOTHES = "Clouthes",
+  ACCESSORIES = "Acessórios",
+  SHOES = "Shoes",
+}
