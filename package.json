@@ -4,8 +4,8 @@
   "description": "O objetivo dos exercícios é desenvolver o próprio projeto Labecommerce - Backend conforme o avanço das aulas. A cada atividade da tarde iremos implementar ou refatorar partes do projeto, além de praticar lógicas por fora (como o de hoje).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node ./build/index.js"
+    "start": "tsc && node build/index.js",
+    "dev": "ts-node-dev src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,14 @@
   },
   "homepage": "https://github.com/MichelleAntunes/labecommerce-backend#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2"
   },
   "dependencies": {
-    "@types/node": "^18.15.5"
+    "@types/node": "^18.15.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   }
 }
