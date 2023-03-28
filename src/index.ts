@@ -105,6 +105,94 @@ app.get("/purchases", (req: Request, res: Response) => {
   res.status(200).send(purchase);
 });
 
+//getProductByID
+app.get("/products/:id", (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = products.find((product) => {
+    return product.id === id;
+  });
+  if (result) {
+    res.status(200).send(result);
+  } else {
+    res.send("Produto não encontrado");
+  }
+});
+
+//getUserPurchasesById
+
+app.get("/users/:id/purchases", (req: Request, res: Response) => {
+  const userId = req.params.id;
+  const result = purchase.find((user) => {
+    return user.userId === userId;
+  });
+  if (result) {
+    res.status(200).send(result);
+  } else {
+    res.status(400).send("Usuário não encontrado");
+  }
+});
+
+//deleteUserById
+
+app.delete("/users/:id", (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = users.findIndex((user) => {
+    return user.id === id;
+  });
+  if (result >= 0) {
+    users.splice(result, 1);
+  }
+  res.status(200).send("User apagado com sucesso");
+});
+
+//deleteProductById
+app.delete("/products/:id", (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = products.findIndex((product) => {
+    return product.id === id;
+  });
+  if (result >= 0) {
+    products.splice(result, 1);
+  }
+  res.status(200).send("Produto apagado com sucesso");
+});
+
+//editUserById
+app.put("/users/:id", (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  const newEmail = req.body.email as string | undefined;
+  const newPassword = req.body.password as number | undefined;
+
+  const userToEdit = users.find((user) => {
+    return user.id === id;
+  });
+  if (userToEdit) {
+    userToEdit.email = newEmail || userToEdit.email;
+    userToEdit.password = newPassword || userToEdit.password;
+  }
+  res.status(200).send("Atulização realizada com sucesso");
+});
+
+//editProductById
+app.put("/products/:id", (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  const newName = req.body.name as string | undefined;
+  const newPrice = req.body.price as number | undefined;
+  const newCategory = req.body.category as SHOP | undefined;
+
+  const productToEdit = products.find((product) => {
+    return product.id === id;
+  });
+  if (productToEdit) {
+    productToEdit.name = newName || productToEdit.name;
+    productToEdit.price = newPrice || productToEdit.price;
+    productToEdit.category = newCategory || productToEdit.category;
+  }
+  res.status(200).send("Produto atualizado com sucesso");
+});
+
 //***************************************************** */
 // console.log("Usuários");
 // console.log(users);

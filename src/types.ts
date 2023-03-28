@@ -5,7 +5,7 @@ export type TUser = {
 };
 
 export type TProduct = {
-  id: number;
+  id: string;
   name: string;
   price: number;
   category: SHOP;
@@ -13,7 +13,7 @@ export type TProduct = {
 
 export type TPurchase = {
   userId: string;
-  productId: number;
+  productId: string;
   quantity: number;
   totalPrice: number;
 };
