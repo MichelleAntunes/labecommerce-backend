@@ -15,13 +15,13 @@ export let users: TUser[] = [
 
 export let products: TProduct[] = [
   {
-    id: 10,
+    id: "c01",
     name: "Calça-Jeans",
     price: 50,
     category: SHOP.CLOTHES,
   },
   {
-    id: 5,
+    id: "s01",
     name: "Scarpin",
     price: 150,
     category: SHOP.SHOES,
@@ -65,7 +65,7 @@ getAllUsers();
 // Product************
 
 export function createProduct(
-  id: number,
+  id: string,
   name: string,
   price: number,
   category: SHOP
@@ -86,7 +86,7 @@ export function getAllProducts() {
 
 getAllProducts();
 
-export function getProductById(idToSearce: number) {
+export function getProductById(idToSearce: string) {
   products.map((products) => {
     if (products.id === idToSearce) {
       return console.log(products);
@@ -110,7 +110,7 @@ export function queryProductsByName(q: string) {
 
 export function createPurchase(
   userId: string,
-  productId: number,
+  productId: string,
   quantity: number,
   totalPrice: number
 ): TPurchase[] {
