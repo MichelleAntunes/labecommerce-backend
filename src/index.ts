@@ -15,7 +15,7 @@ import {
 import { TProduct, TPurchase, TUser } from "./types";
 import { SHOP } from "./types";
 import { type } from "os";
-
+import { db } from "./dataBase/knex";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -25,9 +25,10 @@ app.listen(3004, () => {
 });
 
 // getAllUsers
-app.get("/users", (req: Request, res: Response) => {
+app.get("/users", async (req: Request, res: Response) => {
   try {
-    res.status(200).send(users);
+    const result = await db.raw(`SELECT * FROM users`);
+    res.status(200).send(result);
   } catch (error) {
     console.log(error);
   }
@@ -35,9 +36,10 @@ app.get("/users", (req: Request, res: Response) => {
 
 // getAllProducts
 
-app.get("/products", (req: Request, res: Response) => {
+app.get("/products", async (req: Request, res: Response) => {
   try {
-    res.status(200).send(products);
+    const result = await db.raw(`SELECT * FROM products`);
+    res.status(200).send(result);
   } catch (error) {
     console.log(error);
   }
