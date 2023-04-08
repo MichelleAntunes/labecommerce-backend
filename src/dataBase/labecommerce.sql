@@ -2,9 +2,13 @@
 
 CREATE TABLE users (     
 id TEXT PRIMARY KEY UNIQUE NOT NULL,
+name TEXT UNIQUE NOT NULL,
  email TEXT UNIQUE NOT NULL,   
- password TEXT NOT NULL
+ password TEXT NOT NULL,
+ created_at TEXT DEFAULT (DATETIME()) NOT NULL
  );
+SELECT * FROM users;
+ DROP TABLE users;
 --Get All Users
  SELECT * FROM users
  ORDER BY email ASC;
@@ -30,16 +34,18 @@ UPDATE users
 SET id = "Bananinha"
 WHERE id = "002";
 
+
 -- Criação da tabela de pedidos
 CREATE TABLE purchases (
   id TEXT PRIMARY KEY UNIQUE NOT NULL ,
   total_price REAL NOT NULL,
   paid INTEGER NOT NULL DEFAULT 0, -- A coluna paid será utilizada para guardar uma lógica booleana. O SQLite recomenda o uso do número 0 para false e 1 para true. Os pedidos começam com paid valendo 0.
-  delivered_at TEXT, -- A coluna delivered_at será utilizada para gerenciar a data de entrega do pedido. Ela é opcional, porque sempre começará sem valor ao criar um pedido, ou seja, null.
+  -- delivered_at TEXT, -- A coluna delivered_at será utilizada para gerenciar a data de entrega do pedido. Ela é opcional, porque sempre começará sem valor ao criar um pedido, ou seja, null.
   buyer_id TEXT NOT NULL,
+  created_at TEXT DEFAULT (DATETIME()) NOT NULL,
   FOREIGN KEY (buyer_id) REFERENCES users (id)  
 );
-
+SELECT * FROM purchases;
 DROP TABLE purchases;
 
 INSERT INTO purchases (id, total_price,buyer_id)
@@ -68,12 +74,17 @@ UPDATE purchases
 SET delivered_at = DATETIME('now')
 WHERE id = "P02";
 
-CREATE TABLE products ( id TEXT PRIMARY KEY UNIQUE NOT NULL,
+CREATE TABLE products ( 
+id TEXT PRIMARY KEY UNIQUE NOT NULL,
  name TEXT  NOT NULL,   
  price REAL NOT NULL,
- category TEXT NOT NULL
+ description TEXT NOT NULL,
+ category TEXT NOT NULL,
+ imageUrl TEXT NOT NULL
  );
 
+DROP TABLE products;
+SELECT * FROM products;
 --Get All Products VERSÃO 1
  SELECT * FROM products
  ORDER BY price ASC
