@@ -26,16 +26,16 @@ img aqui
 
 ## Requisitos:
 
-- [ ] Cadastro de usuário
-- [ ] Cadastro de produtos
-- [ ] Cadastro de compras
-- [ ] Visualizar usuários cadastrados
-- [ ] Visualizar produtos cadastrados
-- [ ] Visualizar compras cadastradas, junto com dados do usuário que realizou a compra e informações dos produtos adicionados
-- [ ] Editar informações do usuário
-- [ ] Editar informações do produto
-- [ ] Deletar usuário
-- [ ] Deletar produto
+- [x] Cadastro de usuário
+- [x] Cadastro de produtos
+- [x] Cadastro de compras
+- [x] Visualizar usuários cadastrados
+- [x] Visualizar produtos cadastrados
+- [x] Visualizar compras cadastradas, junto com dados do usuário que realizou a compra e informações dos produtos adicionados
+- [x] Editar informações do usuário
+- [x] Editar informações do produto
+- [x] Deletar usuário
+- [x] Deletar produto
 
 ## Como rodar este projeto?
 
