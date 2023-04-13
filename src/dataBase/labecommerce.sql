@@ -13,10 +13,10 @@ SELECT * FROM users;
  SELECT * FROM users
  ORDER BY email ASC;
 
- INSERT INTO users(id, email, password)
-VALUES ("001", "usuario_numero1@email.com", "01C02"),
-("002", "usuario_numero2@email.com", "0jk00"),
-("003", "usuario_numero3@email.com", "asd142");
+ INSERT INTO users(id,name, email, password)
+VALUES ("001", "michelle","usuario_numero1@email.com", "01C02"),
+("002","bruno", "usuario_numero2@email.com", "0jk00"),
+("003","camil", "usuario_numero3@email.com", "asd142");
 
 INSERT INTO users (id, email, password)
 VALUES ("004", "usuario_numero4@email.com", "01478");
@@ -40,7 +40,7 @@ CREATE TABLE purchases (
   id TEXT PRIMARY KEY UNIQUE NOT NULL ,
   total_price REAL NOT NULL,
   paid INTEGER NOT NULL DEFAULT 0, -- A coluna paid será utilizada para guardar uma lógica booleana. O SQLite recomenda o uso do número 0 para false e 1 para true. Os pedidos começam com paid valendo 0.
-  -- delivered_at TEXT, -- A coluna delivered_at será utilizada para gerenciar a data de entrega do pedido. Ela é opcional, porque sempre começará sem valor ao criar um pedido, ou seja, null.
+  delivered_at TEXT DEFAULT (DATETIME()) NOT NULL, -- A coluna delivered_at será utilizada para gerenciar a data de entrega do pedido. Ela é opcional, porque sempre começará sem valor ao criar um pedido, ou seja, null.
   buyer_id TEXT NOT NULL,
   created_at TEXT DEFAULT (DATETIME()) NOT NULL,
   FOREIGN KEY (buyer_id) REFERENCES users (id)  
@@ -50,9 +50,9 @@ DROP TABLE purchases;
 
 INSERT INTO purchases (id, total_price,buyer_id)
 VALUES ("P01", 299,  "003" ),
-("P02", 50,  "004"),
-("P03", 50,  "004"),
-("P04", 149, "003"),
+("P02", 50,  "001"),
+("P03", 50,  "u001"),
+("P04", 149, "u0020"),
 ("P05", 15, "Bananinha");
 
 SELECT * FROM purchases
@@ -96,16 +96,16 @@ SELECT * FROM products;
  WHERE price > 90 AND price < 200 
  ORDER BY price ASC;
 
- INSERT INTO products(id, name, price, category)
-VALUES ("001", "Calça-Jeans Skinny", 199.90, "Clouthes"),
-("002", "Calça-Jeans Pantalona", 99.90, "Clouthes"),
-("003", "Calça-Jeans Plus Size", 199.90, "Clouthes"),
-  ("004", "Adidas All-Star", 599.90, "Shoes"),
- ("005", "Vans Tradicional", 399.90, "Shows"),
- ("006", "Havaianas Branca", 29.90, "Shoes"),
- ("007", "Brinco Strass", 299.90, "Acessórios"),
- ("008", "Shooker", 199.90, "Acessórios"),
- ("009", "Conjunto Pulseiras", 59.90, "Acessórios");
+ INSERT INTO products(id, name, price, description, category,imageUrl)
+VALUES ("001", "Calça-Jeans Skinny", 199.90,"uma descricão", "Clouthes", "uma img"),
+("002", "Calça-Jeans Pantalona", 99.90,"uma descricão", "Clouthes", "uma img"),
+("003", "Calça-Jeans Plus Size", 199.90,"uma descricão", "Clouthes", "uma img"),
+  ("004", "Adidas All-Star", 599.90,"uma descricão", "Shoes", "uma img"),
+ ("005", "Vans Tradicional", 399.90, "uma descricão" , "Shoes", "uma img"),
+ ("006", "Havaianas Branca", 29.90, "uma descricão","Shoes", "uma img"),
+ ("007", "Brinco Strass", 299.90,"uma descricão", "Acessórios", "uma img"),
+ ("008", "Shooker", 199.90,"uma descricão", "Acessórios", "uma img"),
+ ("009", "Conjunto Pulseiras", 59.90, "uma descricão","Acessórios", "uma img");
 
 --Search Product by name
 SELECT * FROM products
