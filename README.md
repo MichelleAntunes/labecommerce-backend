@@ -52,7 +52,7 @@ $ npm install
 # Execute a aplicação
 $ npm run dev
 
-# A aplicação será iniciada na porta 3000, acesse pelo navegador: http://localhost:3000
+# A aplicação será iniciada na porta 3004, acesse pelo navegador: http://localhost:3004
 
 ```
 
