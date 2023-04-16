@@ -16,10 +16,14 @@ export type TProduct = {
 
 export type TPurchase = {
   id: string;
-  // productId: string;
-  // quantity: number;
-  total_price: number;
   buyer_id: string;
+  total_price: number;
+};
+
+export type TPurchaseProduct = {
+  purchase_id: string;
+  product_id: string;
+  quantity: number;
 };
 
 export enum SHOP {

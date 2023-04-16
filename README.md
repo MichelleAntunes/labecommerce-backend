@@ -17,7 +17,7 @@ O objetivo desse projeto é a criação de API com funcionalidades CRUD no proje
 
 ## Documentação da API
 
-Link Demonstração: ******\*\*******
+Link Demonstração: https://documenter.getpostman.com/view/25825355/2s93RRxtwy
 
 ## Estruturação do banco de dados
 
